@@ -1,4 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,600&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @source "../../views/**/*.erb";
 @source "../../helpers/**/*.rb";
+
+
+@theme {
+  --color-canvas:        #FAFAF8;
+  --color-surface:       #FFFFFF;
+  --color-surface-alt:   #F4F3EE;
+  --color-surface-hover: #EFEEE8;
+  --color-border:        #E7E5DD;
+  --color-border-strong: #D8D5CC;
+  --color-ink:           #1A1A1A;
+  --color-ink-muted:     #5C5A52;
+  --color-ink-soft:      #8A877E;
+  --color-ink-faint:     #B5B2A8;
+  --color-accent:        #2F6B4F;
+  --color-accent-soft:        #E5EFE9;
+  --color-accent-hover:        #245440;
+
+  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* Class-based dark mode — add class="dark" to <body> to activate */
+@custom-variant dark (&:is(.dark, .dark *));
+
+:root {
+  --score-strong: #2F7D5C; --score-strong-soft: #E5F1EA;
+  --score-good:   #5C7A4F; --score-good-soft:   #ECF1E5;
+  --score-mid:    #B98620; --score-mid-soft:    #F8EFD9;
+  --score-weak:   #B85447; --score-weak-soft:   #F6E4E0;
+  --add-bg: #ECF3EC; --add-mark: #2F7D5C;
+  --del-bg: #F6E8E5; --del-mark: #B85447;
+}
+
+.dark {
+  --color-canvas:        #141414;
+  --color-surface:       #1C1C1C;
+  --color-surface-alt:   #232322;
+  --color-surface-hover: #2A2A29;
+  --color-border:        #2E2E2C;
+  --color-border-strong: #3D3D3A;
+  --color-ink:           #ECEAE3;
+  --color-ink-muted:     #A8A59C;
+  --color-ink-soft:      #7A7770;
+  --color-ink-faint:     #555350;
+  --color-accent:        #8B9CFF;
+  --color-accent-soft:   #1E2240;
+  --color-accent-hover:  #A4B2FF;
+  --score-strong: #6FCB9A; --score-strong-soft: #1F3329;
+  --score-good:   #A2B890; --score-good-soft:   #25301E;
+  --score-mid:    #E6B860; --score-mid-soft:    #3A2D14;
+  --score-weak:   #E68A7A; --score-weak-soft:   #3A1F1B;
+  --add-bg: #1F3329; --add-mark: #6FCB9A;
+  --del-bg: #3A1F1B; --del-mark: #E68A7A;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+/* Remove top border of first bullet diff */
+.bullet-diff:nth-child(1 of .bullet-diff) {
+	@apply border-t-0;
+}
+
+/* Diff text highlights */
+mark.diff-add {
+  background: var(--add-bg);
+  color: var(--add-mark);
+  padding: 0 2px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+mark.diff-del {
+  background: var(--del-bg);
+  color: var(--del-mark);
+  padding: 0 2px;
+  border-radius: 3px;
+  text-decoration: line-through;
+}
+
+/* Skill chips */
+.skill-chip {
+  @apply px-2.5 py-1 rounded-full text-xs bg-(--color-surface-alt) border border-(--color-border) text-(--color-ink-muted) hover:bg-(--color-surface-hover) transition-colors;
+}
+.skill-chip.alt-chip {
+	@apply bg-surface text-ink-soft hover:bg-surface-hover border-border;
+}
+.skill-chip.added {
+  @apply bg-(--add-bg) border-(--add-bg) text-(--add-mark);
+}
+.skill-chip.removed {
+  @apply bg-(--del-bg) border-(--del-bg) text-(--del-mark) line-through;
+}
+
+/* Diff row selection state
+   TODO: add when JS toggle is wired up.
+   Toggle `.diff-row-label--selected` on the label column when the user clicks "Use this" or "Selected".
+   The selected label column gets accent-soft bg + accent text; the opposing column reverts to surface bg + ink-soft text.
+   The "Use this" / "Selected" button swap is also driven by this toggle (show one, hide the other).
+.diff-row-label--selected { background: var(--color-accent-soft); }
+.diff-row-label--selected .diff-row-btn-use   { display: none; }
+.diff-row-label--selected .diff-row-btn-select { display: inline-flex; }
+.diff-row-label--unselected .diff-row-btn-use   { display: inline-flex; }
+.diff-row-label--unselected .diff-row-btn-select { display: none; }
+*/
+
+/* Button focus-visible ring
+   TODO: add during accessibility pass.
+   Removes browser default outline and replaces with a design-token ring so keyboard navigation is visible.
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+*/
+
+/* Button active / pressed state
+   TODO: add during interaction-polish pass.
+   Gives tactile feedback on click; scale-down is enough for small buttons.
+button:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+*/
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skel {
+  background: linear-gradient(90deg, var(--color-surface-alt) 25%, var(--color-canvas) 50%, var(--color-surface-alt) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+/* Final resume styles */
+.resume {
+  background: white;
+  font-family: var(--font-serif);
+  font-size: 11.5pt;
+  line-height: 1.45;
+  color: #1c1c1c;
+  padding: 56px 64px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  max-width: 8.5in;
+  margin: 0 auto;
+}
+.resume h1 { font-size: 22pt; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+.resume h2 {
+  font-family: var(--font-sans);
+  font-size: 9.5pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 22px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 0.75px solid #1c1c1c;
+  color: #1c1c1c;
+}
+.resume .res-contact { font-family: var(--font-sans); font-size: 9.5pt; color: #444; margin-bottom: 4px; }
+.resume .res-job { margin-bottom: 14px; }
+.resume .res-job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 2px; }
+.resume .res-job-title { font-weight: 600; font-size: 11.5pt; }
+.resume .res-job-meta { font-family: var(--font-sans); font-size: 9.5pt; color: #555; white-space: nowrap; }
+.resume ul { margin: 4px 0 0; padding-left: 18px; }
+.resume li { margin-bottom: 3px; }
+.dark .resume { background: #FAFAF8; color: #1c1c1c; }

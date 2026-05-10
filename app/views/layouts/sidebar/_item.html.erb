@@ -1,0 +1,21 @@
+<%# locals: (title:, score:, company:, created_at:, href:, selected: false, rating: :hire) %>
+
+<%
+    rating_color = case rating
+    when :hire, :leaning_hire
+        "var(--score-strong)"
+    else
+        "var(--score-weak)"
+    end
+
+    selected_classes = selected ? "bg-surface shadow-[inset_0_0_0_1px_var(--color-border)]" : ""
+%>
+
+<%= link_to href, class: "grid gap-x-2 gap-y-1 p-2.5 rounded-lg hover:bg-surface-hover cursor-pointer mb-px grid-cols-[1fr_auto] #{selected_classes}" do %>
+    <div class="font-medium text-ink truncate"><%= title %></div>
+    <div class="text-xs font-medium text-ink-muted tabular-nums self-start pt-0.5"><%= score %></div>
+    <div class="text-xs text-ink-soft truncate col-start-1">
+    <span class="w-[7px] h-[7px] rounded-full inline-block mr-1.5 align-middle" style="background-color: <%= rating_color %>"></span>
+    <%= company %> · <%= time_ago(created_at) %>
+    </div>
+<% end %>

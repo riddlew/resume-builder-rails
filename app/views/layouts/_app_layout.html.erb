@@ -1,0 +1,8 @@
+<div class="grid h-screen bg-canvas grid-cols-[264px_1fr]">
+  <%= render 'layouts/sidebar/sidebar' %>
+  <div class="flex-1 overflow-y-auto min-h-0">
+    <div class="max-w-5xl px-8 py-5 mx-auto my-0">
+      <%= yield %>
+    </div>
+  </div>
+</div>

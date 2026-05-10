@@ -1,0 +1,94 @@
+<aside class="bg-surface-alt border-r border-border flex flex-col min-h-0 h-full">
+
+  <%# Head %>
+  <div class="p-4 flex flex-col gap-3">
+    <%# Brand %>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-[18px] h-[18px] rounded-sm bg-ink text-canvas font-serif italic font-semibold text-md grid place-items-center leading-none shrink-0">T</span>
+        <span class="font-semibold text-lg tracking-tight text-ink">Tailor</span>
+      </div>
+      <button class="w-7 h-7 rounded-lg border border-border bg-surface text-ink-muted grid place-items-center hover:bg-surface-hover hover:text-ink hover:border-border-strong transition-colors" aria-label="Switch to dark mode">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+
+    <%# New resume button %>
+    <%= link_to new_path, class: "w-full flex items-center justify-between px-3 py-2 bg-surface border border-border rounded-lg font-medium text-ink hover:bg-canvas hover:border-border-strong transition-colors" do %>
+      <span class="flex items-center gap-2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+        New tailored resume
+      </span>
+    <% end %>
+
+    <%# Search %>
+    <div class="relative">
+      <svg class="absolute left-[9px] top-1/2 -translate-y-1/2 text-ink-faint" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input class="w-full h-8 pl-8 pr-2.5 bg-surface border border-border rounded-lg text-ink outline-none placeholder:text-ink-faint focus:border-accent focus:ring-3 focus:ring-accent-soft" placeholder="Search resumes…" type="search">
+    </div>
+  </div>
+
+  <%# Resume list %>
+  <div class="flex-1 overflow-y-auto min-h-0 px-2 pb-4">
+
+    <%
+      items = [
+        { title: "Senior Product Designer", company: "Stripe", created_at: 2.hours.ago, score: 87, rating: :hire },
+        { title: "Staff Engineer, Platform", company: "Linear", created_at: 1.day.ago, score: 74, rating: :leaning_hire, selected: true },
+        { title: "Growth Lead", company: "Notion", created_at: 3.days.ago, score: 61, rating: :leaning_no_hire },
+        { title: "Head of Design", company: "Figma", created_at: 13.days.ago, score: 52, rating: :no_hire },
+      ]
+
+      today = Date.current
+      grouped = items.group_by do |item|
+        date = item[:created_at].to_date
+        if date == today
+          :today
+        elsif date >= today.beginning_of_week
+          :this_week
+        else
+          :earlier
+        end
+      end
+    %>
+
+    <% { today: "Today", this_week: "This Week", earlier: "Earlier" }.each do |key, label| %>
+      <% next if grouped[key].blank? %>
+
+      <div class="text-xs font-semibold uppercase tracking-wide text-ink-soft p-2 mt-1"><%= label %></div>
+
+      <% grouped[key].each do |item| %>
+        <%= render "layouts/sidebar/item",
+              href: preview_path,
+              title: item[:title],
+              score: item[:score],
+              company: item[:company],
+              created_at: item[:created_at],
+              rating: item[:rating],
+              selected: item[:selected] %>
+      <% end %>
+    <% end %>
+
+  </div>
+
+  <%# Footer %>
+  <div class="border-t border-border p-2.5 flex items-center justify-between gap-2.5 bg-surface-alt">
+    <%= link_to profile_path, class: "flex items-center gap-2.5" do %>
+      <div class="w-7 h-7 rounded-full bg-accent text-white grid place-items-center font-semibold text-xs shrink-0">AM</div>
+      <div class="font-medium text-ink leading-tight">Alex Morgan</div>
+    <% end %>
+    <%= link_to profile_path, class: "w-7 h-7 rounded-lg flex items-center justify-center text-ink-muted hover:bg-surface-hover transition-colors" do %>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    <% end %>
+  </div>
+
+</aside>

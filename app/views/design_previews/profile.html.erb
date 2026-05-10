@@ -1,0 +1,198 @@
+<%= render layout: 'layouts/app_layout' do %>
+
+  <%# Header %>
+  <div class="flex items-baseline justify-between mb-6">
+    <div>
+      <h1 class="font-serif font-medium text-ink m-0 mb-1" style="font-size: 26px; letter-spacing: -0.015em;">Your profile</h1>
+      <p class="m-0 text-ink-muted" style="font-size: 13.5px;">The source data we tailor for each job. The more detailed, the better.</p>
+    </div>
+    <button class="inline-flex items-center h-8 px-[14px] rounded-[10px] text-[13px] font-medium text-ink-muted hover:bg-surface-hover hover:text-ink transition-colors">Done</button>
+  </div>
+
+  <%# Basics card %>
+  <div class="bg-surface border border-border rounded-[14px] mb-4" style="padding: 20px 22px;">
+    <div class="text-[11px] font-semibold text-ink-soft uppercase tracking-[0.06em] mb-[14px]">Basics</div>
+    <div class="grid gap-[14px] mb-[14px]" style="grid-template-columns: 1fr 1fr;">
+      <div>
+        <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Full name</label>
+        <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none placeholder:text-ink-faint focus:border-accent" style="padding: 10px 12px;" value="Alex Morgan" type="text">
+      </div>
+      <div>
+        <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Title</label>
+        <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none placeholder:text-ink-faint focus:border-accent" style="padding: 10px 12px;" value="Senior Software Engineer" type="text">
+      </div>
+      <div>
+        <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Email</label>
+        <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none placeholder:text-ink-faint focus:border-accent" style="padding: 10px 12px;" value="alex.morgan@hey.com" type="email">
+      </div>
+      <div>
+        <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Phone</label>
+        <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none placeholder:text-ink-faint focus:border-accent" style="padding: 10px 12px;" value="(415) 555-0142" type="tel">
+      </div>
+      <div>
+        <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Location</label>
+        <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none placeholder:text-ink-faint focus:border-accent" style="padding: 10px 12px;" value="San Francisco, CA" type="text">
+      </div>
+    </div>
+    <div>
+      <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Professional summary</label>
+      <textarea class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none placeholder:text-ink-faint focus:border-accent resize-y leading-[1.55]" style="padding: 10px 12px; min-height: 80px;">Senior software engineer with 8+ years building consumer and developer-facing products. Comfortable owning systems end to end, from API design through frontend polish. Recent focus on real-time collaboration, performance, and design-engineering crossover.</textarea>
+    </div>
+  </div>
+
+  <%# Experience card %>
+  <div class="bg-surface border border-border rounded-[14px] mb-4" style="padding: 20px 22px;">
+    <div class="flex items-center justify-between mb-[14px]">
+      <div class="text-[11px] font-semibold text-ink-soft uppercase tracking-[0.06em]">Experience</div>
+      <button class="inline-flex items-center gap-1.5 h-7 px-3 rounded-[8px] text-[12px] font-medium bg-surface border border-border text-ink hover:bg-surface-hover hover:border-border-strong transition-colors">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        Add job
+      </button>
+    </div>
+
+    <%# Job: Linear %>
+    <div class="border border-border rounded-[10px] mb-3" style="padding: 16px;">
+      <div class="grid gap-3 mb-3" style="grid-template-columns: 1fr 1fr;">
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Company</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Linear" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Title</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Senior Software Engineer" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Start</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Mar 2022" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">End</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Present" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Location</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Remote" type="text">
+        </div>
+      </div>
+      <div>
+        <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Bullet points</label>
+        <div class="flex gap-1.5 mb-1.5 items-start">
+          <div class="mt-[14px] text-ink-faint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+          </div>
+          <textarea class="flex-1 border border-border rounded-[10px] bg-surface outline-none focus:border-accent resize-y leading-[1.55]" style="font-size: 13px; padding: 10px 12px; min-height: 56px;">Led the rebuild of the issue search system, reducing p95 query latency from 850ms to 120ms across 200k+ active workspaces.</textarea>
+          <button class="mt-1 inline-flex items-center h-8 px-2 rounded-[10px] text-ink-muted hover:bg-surface-hover hover:text-ink transition-colors">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          </button>
+        </div>
+        <div class="flex gap-1.5 mb-1.5 items-start">
+          <div class="mt-[14px] text-ink-faint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+          </div>
+          <textarea class="flex-1 border border-border rounded-[10px] bg-surface outline-none focus:border-accent resize-y leading-[1.55]" style="font-size: 13px; padding: 10px 12px; min-height: 56px;">Designed and shipped the Cycles automation engine; adopted by 40% of paying customers within first quarter.</textarea>
+          <button class="mt-1 inline-flex items-center h-8 px-2 rounded-[10px] text-ink-muted hover:bg-surface-hover hover:text-ink transition-colors">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          </button>
+        </div>
+        <button class="inline-flex items-center gap-1.5 h-7 px-2 text-[12px] font-medium text-ink-muted hover:bg-surface-hover hover:text-ink rounded-[8px] transition-colors">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          Add bullet
+        </button>
+      </div>
+    </div>
+
+    <%# Job: Stripe (collapsed-style, less detail) %>
+    <div class="border border-border rounded-[10px] mb-3" style="padding: 16px;">
+      <div class="grid gap-3 mb-3" style="grid-template-columns: 1fr 1fr;">
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Company</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Stripe" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Title</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Software Engineer" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Start</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Jul 2019" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">End</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Feb 2022" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Location</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="San Francisco, CA" type="text">
+        </div>
+      </div>
+      <div>
+        <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Bullet points</label>
+        <div class="flex gap-1.5 mb-1.5 items-start">
+          <div class="mt-[14px] text-ink-faint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+          </div>
+          <textarea class="flex-1 border border-border rounded-[10px] bg-surface outline-none focus:border-accent resize-y leading-[1.55]" style="font-size: 13px; padding: 10px 12px; min-height: 56px;">Built dashboard charting infrastructure used by 1M+ merchants daily, processing 4B+ data points per day.</textarea>
+          <button class="mt-1 inline-flex items-center h-8 px-2 rounded-[10px] text-ink-muted hover:bg-surface-hover hover:text-ink transition-colors">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          </button>
+        </div>
+        <button class="inline-flex items-center gap-1.5 h-7 px-2 text-[12px] font-medium text-ink-muted hover:bg-surface-hover hover:text-ink rounded-[8px] transition-colors">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          Add bullet
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <%# Education card %>
+  <div class="bg-surface border border-border rounded-[14px] mb-4" style="padding: 20px 22px;">
+    <div class="flex items-center justify-between mb-[14px]">
+      <div class="text-[11px] font-semibold text-ink-soft uppercase tracking-[0.06em]">Education</div>
+      <button class="inline-flex items-center gap-1.5 h-7 px-3 rounded-[8px] text-[12px] font-medium bg-surface border border-border text-ink hover:bg-surface-hover hover:border-border-strong transition-colors">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        Add school
+      </button>
+    </div>
+    <div class="border border-border rounded-[10px] mb-3" style="padding: 16px;">
+      <div class="grid gap-3 mb-3" style="grid-template-columns: 1fr 1fr;">
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">School</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="Carnegie Mellon University" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Degree</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="B.S. Computer Science" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Start</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="2013" type="text">
+        </div>
+        <div>
+          <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">End</label>
+          <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent" style="padding: 10px 12px;" value="2017" type="text">
+        </div>
+      </div>
+      <div>
+        <label class="block text-[12px] font-medium text-ink-muted mb-1.5 tracking-[0.005em]">Details</label>
+        <textarea class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none focus:border-accent resize-y leading-[1.55]" style="padding: 10px 12px; min-height: 56px;">Minor in Human-Computer Interaction. GPA 3.8/4.0.</textarea>
+      </div>
+    </div>
+  </div>
+
+  <%# Skills card %>
+  <div class="bg-surface border border-border rounded-[14px] mb-4" style="padding: 20px 22px;">
+    <div class="text-[11px] font-semibold text-ink-soft uppercase tracking-[0.06em] mb-[14px]">Skills</div>
+    <div class="flex flex-wrap gap-1.5 mb-3">
+      <% ["TypeScript", "React", "Node.js", "Go", "PostgreSQL", "GraphQL", "AWS", "Kubernetes", "System design", "Distributed systems", "Performance optimization", "Design systems"].each do |skill| %>
+        <span class="skill-chip inline-flex items-center gap-1.5">
+          <%= skill %>
+          <button class="text-ink-faint hover:text-ink-soft transition-colors" style="background: none; border: 0; cursor: pointer; padding: 0; line-height: 0;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </span>
+      <% end %>
+    </div>
+    <input class="w-full border border-border rounded-[10px] text-[13.5px] text-ink bg-surface outline-none placeholder:text-ink-faint focus:border-accent" style="padding: 10px 12px;" placeholder="Add a skill and press Enter" type="text">
+  </div>
+
+<% end %>

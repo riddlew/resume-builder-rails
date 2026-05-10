@@ -13,4 +13,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "dashboard#show"
+
+  scope path: "designs", controller: :design_previews do
+    get :new
+    get :edit
+    get :profile
+    get :preview
+  end
 end
